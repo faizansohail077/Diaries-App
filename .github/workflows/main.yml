@@ -1,0 +1,28 @@
+name: React_deploy
+
+on:
+  push:
+    branches: [ master ]
+
+
+jobs:
+  build:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+        with:
+         node-version: 12
+      - name: Install yarn
+        uses: Borales/actions-yarn@v2.3.0
+        with:
+         cmd: install
+      - name: yarn build
+        run: yarn build
+      
+      - name: install surge
+        run: npm install --global surge
+      - name: surge deploy
+        run: surge ./build Project_9b_bootcamp2020_faizan.surge.sh --token ${{secrets.SURGE_TOKEN}} 
