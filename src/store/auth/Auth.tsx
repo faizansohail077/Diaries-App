@@ -16,8 +16,8 @@ const schema = Yup.object().shape({
   email: Yup.string().email('Please provide a valid email address (abc@xy.z)'),
 });
 
-const Auth: FC = () => {
-  const { handleSubmit, register, errors } = useForm<User>({
+const Auth: React.FC = () => {
+  const { handleSubmit, register, errors } = useForm<any>({
     validationSchema: schema,
   });
   const [isLogin, setIsLogin] = useState(true);

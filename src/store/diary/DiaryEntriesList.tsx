@@ -12,7 +12,7 @@ import { useAppDispatch } from '../../store';
 const DiaryEntriesList: FC = () => {
   const { entries } = useSelector((state: RootState) => state);
   const dispatch = useAppDispatch();
-  const { id } = useParams();
+  const { id }:any = useParams();
 
   useEffect(() => {
     if (id != null) {
