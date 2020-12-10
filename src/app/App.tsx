@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import {RootState} from '../rootReducer'
 
 
-// const Auth = lazy(() => import('../store/auth/Auth'));
-// const Home = lazy(()=>import('../store/home/Home'))
+const Auth = lazy(() => import('../store/auth/Auth'));
+const Home = lazy(() => import(`../store/home/Home`));
 
 const App: FC = () => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isAuthenticated)
@@ -14,7 +14,7 @@ const App: FC = () => {
       <Switch>
         <Route path='/'>
           <Suspense fallback={<p>Loading</p>}>
-            {isLoggedIn ? '':''}
+            {isLoggedIn ? <Home/>:<Auth/>}
           </Suspense>
         </Route>
 
